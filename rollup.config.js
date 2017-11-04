@@ -7,6 +7,7 @@ export default {
 		file: "dist/bot.js",
 		format: "cjs"
 	},
+	external: ["micro"],
 	plugins: [
 		babel({
 			// only transpile our source code:
