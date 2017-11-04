@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# Custom dirs/files
+.DS_Store
+dist/
+

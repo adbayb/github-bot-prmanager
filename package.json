@@ -1,0 +1,38 @@
+{
+  "name": "ghubpr-bot",
+  "version": "0.1.0",
+  "description": "A bot allowing easier PR management",
+  "main": "dist/bot.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "format": "prettier --write **/*.{js,jsx,json,css}",
+    "build": "npm run clean && rollup -c",
+    "start": "micro"
+  },
+  "keywords": [
+    "bot",
+    "pr",
+    "github",
+    "pull",
+    "request",
+    "peer",
+    "review"
+  ],
+  "author": "Ayoub Adib <adbayb@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^9.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.10.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.7.4",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-babel-minify": "^3.1.2"
+  }
+}
