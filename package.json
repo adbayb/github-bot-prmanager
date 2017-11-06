@@ -21,6 +21,7 @@
   "author": "Ayoub Adib <adbayb@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "micro": "^9.0.0"
   },
   "devDependencies": {
