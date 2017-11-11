@@ -12,13 +12,10 @@ export default async (req, res) => {
 		if (data.action === "submitted") {
 			//review posted
 		}
+		github.notify(data.action);
 	} catch (e) {
 		return send(res, 500, `Internal server error: ${e.toString()}`);
 	}
 
-	return send(
-		res,
-		200,
-		"Welcome to Micro. Node version: " + process.versions.node
-	);
+	return send(res, 200, "Node version: " + process.versions.node);
 };

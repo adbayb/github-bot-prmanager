@@ -4,9 +4,14 @@
   "description": "A bot allowing easier PR management",
   "main": "dist/bot.js",
   "scripts": {
+	"prebuild": "npm run clean",
+
     "clean": "rimraf dist",
     "format": "prettier --write **/*.{js,jsx,json,css}",
-    "build": "npm run clean && rollup -c",
+    "build": "rollup --config",
+	"watch": "rollup --config --watch",
+
+	"dev": "npm run build && concurrently \"npm run watch\" \"nodemon --watch dist --exec npm start\"",
     "start": "micro"
   },
   "keywords": [
@@ -27,10 +32,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.2",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "concurrently": "^3.5.0",
     "eslint": "^4.11.0",
     "eslint-plugin-prettier": "^2.3.1",
+    "nodemon": "^1.12.1",
     "prettier": "^1.8.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.51.3",

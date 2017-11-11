@@ -22,5 +22,6 @@
 			We don't use babel-preset-stage-1 since it's to early (0 specification, only proposal):
 		*/
 		"stage-2"
-	]
+	],
+	"plugins": ["external-helpers"]
 }
