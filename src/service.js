@@ -1,9 +1,50 @@
-import { withMerge } from "./utils.js";
+import fetch from "isomorphic-fetch";
+import { withMerge, stripUrl } from "./utils.js";
 
 export default class GitHub {
+	constructor({ token } = {}) {
+		this.headers = {
+			...(token ? { Authorization: `token ${token}` } : {}),
+			Accept: "application/json",
+			"Content-Type": "application/json"
+		};
+		console.log(this.headers);
+	}
+
 	plugins = {};
 
-	authenticate() {}
+	static async postFetch(res) {
+		const data = await res.json();
+
+		return new Promise((resolve, reject) => {
+			if (res.status >= 400) {
+				reject(data);
+			}
+
+			resolve(data);
+		});
+	}
+
+	async post(url, body = {}) {
+		const res = await fetch(stripUrl(url), {
+			method: "POST",
+			headers: this.headers,
+			body: JSON.stringify(body)
+		});
+
+		return GitHub.postFetch(res);
+	}
+
+	async get(url) {
+		const res = await fetch(url, {
+			method: "GET",
+			headers: this.headers
+		});
+
+		return this.afterFetch(res);
+	}
+
+	async patch(url) {}
 
 	// @note: notify plugins for a specific event:
 	notify(eventName, data) {

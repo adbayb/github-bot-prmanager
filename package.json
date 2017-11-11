@@ -4,14 +4,12 @@
   "description": "A bot allowing easier PR management",
   "main": "dist/bot.js",
   "scripts": {
-	"prebuild": "npm run clean",
-
+    "prebuild": "npm run clean",
     "clean": "rimraf dist",
     "format": "prettier --write **/*.{js,jsx,json,css}",
     "build": "rollup --config",
-	"watch": "rollup --config --watch",
-
-	"dev": "npm run build && concurrently \"npm run watch\" \"nodemon --watch dist --exec npm start\"",
+    "watch": "rollup --config --watch",
+    "dev": "npm run build && concurrently \"npm run watch\" \"nodemon --watch dist --exec npm start\"",
     "start": "micro"
   },
   "keywords": [
@@ -26,6 +24,7 @@
   "author": "Ayoub Adib <adbayb@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "isomorphic-fetch": "^2.2.1",
     "micro": "^9.0.1"
   },

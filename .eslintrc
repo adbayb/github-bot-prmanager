@@ -1,24 +1,23 @@
 {
 	"env": {
-        "browser": true,
-		"node": true
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaVersion": 2017,
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true
+		// @note: An environment defines global variables that are predefined.
+		// to avoid no-undef error when using window, Promise... global objects:
+		"browser": true,
+		"node": true,
+		"es6": true
+	},
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaVersion": 2017,
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true
 		},
 		"sourceType": "module"
 	},
-    "extends": [
-        "eslint:recommended"
-    ],
-	"plugins": [
-        "prettier"
-    ],
+	"extends": ["eslint:recommended"],
+	"plugins": ["prettier"],
 	"rules": {
-        "prettier/prettier": "error",
-        "no-console": "off"
+		"prettier/prettier": "error",
+		"no-console": "off"
 	}
 }

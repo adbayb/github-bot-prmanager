@@ -1,18 +1,24 @@
-import fetch from "isomorphic-fetch";
+import dotenv from "dotenv";
 import { json, send } from "micro";
 import GitHub from "./service.js";
 import createLabel from "./plugins/createLabel.js";
 
-const github = new GitHub();
+// @note: we populate process.env object with variables' values from .env file:
+dotenv.config();
+
+const github = new GitHub({
+	token: process.env.GITHUB_TOKEN
+});
 github.use(createLabel);
 
 export default async (req, res) => {
 	try {
 		const data = await json(req);
-		if (data.action === "submitted") {
+		const eventName = data.action;
+		if (eventName === "submitted") {
 			//review posted
 		}
-		github.notify(data.action);
+		github.notify(eventName, data);
 	} catch (e) {
 		return send(res, 500, `Internal server error: ${e.toString()}`);
 	}
