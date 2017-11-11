@@ -12,7 +12,7 @@ export default class GitHub {
 
 	plugins = {};
 
-	static async postFetch(res) {
+	static async afterFetch(res) {
 		const data = await res.json();
 
 		return new Promise((resolve, reject) => {
@@ -31,7 +31,7 @@ export default class GitHub {
 			body: JSON.stringify(body)
 		});
 
-		return GitHub.postFetch(res);
+		return GitHub.afterFetch(res);
 	}
 
 	async get(url) {
@@ -40,7 +40,7 @@ export default class GitHub {
 			headers: this.headers
 		});
 
-		return this.afterFetch(res);
+		return GitHub.afterFetch(res);
 	}
 
 	async patch(url) {}
