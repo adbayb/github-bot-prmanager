@@ -13,6 +13,8 @@ export default {
 			// only transpile our source code:
 			exclude: "node_modules/**"
 		}),
-		babelMinify()
+		babelMinify({
+			comments: false
+		})
 	]
 };

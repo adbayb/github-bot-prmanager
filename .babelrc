@@ -1,10 +1,26 @@
 {
-    "presets": [
-        ["env", { 
-            "modules": false,
-            "targets": {
-                "node": true
-            } 
-        }]
-    ]
+	"presets": [
+		[
+			"env",
+			{
+				"modules": false,
+				"targets": {
+					"node": true
+				}
+			}
+		],
+		/*
+			@note: Some other babel plugins will still be required if you use language features
+			that are not officially part of the JavaScript language yet. If compat-table
+			has no info on any browser supporting the feature, the babel-preset-env
+			preset is not going to transpile that for you.
+			A classic example would be use of stage-1/2/3 features.
+			If you use those, keep babel-preset-stage-1 (or 2 or 3) in you babel config.
+
+			@note: babel-preset-stage-2 includes all plugins from babel-preset-stage-3.
+			babel-preset-stage-1 includes all plugins from babel-preset-stage-2 and babel-preset-stage-3.
+			We don't use babel-preset-stage-1 since it's to early (0 specification, only proposal):
+		*/
+		"stage-2"
+	]
 }

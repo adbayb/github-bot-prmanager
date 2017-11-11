@@ -22,17 +22,18 @@
   "license": "MIT",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "micro": "^9.0.0"
+    "micro": "^9.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.1",
+    "babel-eslint": "^8.0.2",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.10.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.11.0",
     "eslint-plugin-prettier": "^2.3.1",
-    "prettier": "^1.7.4",
+    "prettier": "^1.8.2",
     "rimraf": "^2.6.2",
-    "rollup": "^0.50.0",
+    "rollup": "^0.51.3",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-babel-minify": "^3.1.2"
   }
