@@ -3,12 +3,11 @@ import { withMerge, stripUrl } from "./utils.js";
 
 export default class GitHub {
 	constructor({ token } = {}) {
-		this.headers = {
+		this.headers = new Headers({
 			...(token ? { Authorization: `token ${token}` } : {}),
 			Accept: "application/json",
 			"Content-Type": "application/json"
-		};
-		console.log(this.headers);
+		});
 	}
 
 	plugins = {};

@@ -7,8 +7,8 @@ export default service => ({
 		console.log("PR Created", title);
 		try {
 			const res = await service.post(labels_url, {
-				name: "toto6",
-				color: "ff0000"
+				name: "myfirstlabel",
+				color: "ffff00"
 			});
 
 			console.log("Success", res);
