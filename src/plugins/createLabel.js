@@ -1,13 +1,17 @@
 export default service => ({
 	// @note: opened (pr open event) from action field (github api):
 	async labeled({
-		pull_request: { title } = {},
-		repository: { labels_url } = {}
+		pull_request: { title, number } = {},
+		repository: { labels_url, issues_url } = {}
 	}) {
-		console.log("PR Created", title);
+		console.log(
+			"PR Created",
+			title,
+			service.resolveUrl(issues_url, number.toString())
+		);
 		try {
 			const res = await service.post(labels_url, {
-				name: "myfirstlabel",
+				name: "myfirst1",
 				color: "ffff00"
 			});
 

@@ -9,7 +9,7 @@ dotenv.config();
 const github = new GitHub({
 	token: process.env.GITHUB_TOKEN
 });
-github.use(createLabel);
+github.addPlugins(createLabel);
 
 export default async (req, res) => {
 	try {
@@ -18,7 +18,7 @@ export default async (req, res) => {
 		if (eventName === "submitted") {
 			//review posted
 		}
-		github.notify(eventName, data);
+		github.emit(eventName, data);
 	} catch (e) {
 		return send(res, 500, `Internal server error: ${e.toString()}`);
 	}
