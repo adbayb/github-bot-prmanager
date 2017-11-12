@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 import { json, send } from "micro";
 import GitHub from "./service.js";
-import createLabel from "./plugins/createLabel.js";
+import newLabel from "./plugins/newLabel.js";
+import approvedLabel from "./plugins/approvedLabel.js";
 
 // @note: we populate process.env object with variables' values from .env file:
 dotenv.config();
@@ -9,7 +10,7 @@ dotenv.config();
 const github = new GitHub({
 	token: process.env.GITHUB_TOKEN
 });
-github.addPlugins(createLabel);
+github.addPlugins(newLabel, approvedLabel);
 
 export default async (req, res) => {
 	try {

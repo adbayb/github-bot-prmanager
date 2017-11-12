@@ -7,7 +7,7 @@ export default {
 		file: "dist/bot.js",
 		format: "cjs"
 	},
-	external: ["micro", "isomorphic-fetch"],
+	external: ["micro", "isomorphic-fetch", "dotenv"],
 	plugins: [
 		babel({
 			// only transpile our source code:

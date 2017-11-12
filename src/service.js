@@ -1,5 +1,4 @@
 import fetch from "isomorphic-fetch";
-import { resolve } from "url";
 import EventEmitter from "./event.js";
 import { stripUrl } from "./utils.js";
 

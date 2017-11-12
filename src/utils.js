@@ -6,3 +6,7 @@ export const stripUrl = url => {
 	// we need to remove extra {.*}:
 	return url.toString().replace(/^[/]+|{.*}|[/]+$/g, "");
 };
+
+export const getRandomColor = () => {
+	return ((Math.random() * 0xffffff) << 0).toString(16);
+};
