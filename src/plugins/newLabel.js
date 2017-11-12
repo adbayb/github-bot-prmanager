@@ -1,9 +1,9 @@
-import { getRandomColor } from "../utils";
+import { resolveUrl, getRandomColor } from "../utils";
 
 export default service => {
 	// @return: found label data ({id,url,name,color,default})
 	const getLabel = async ({ name, labels_url }) => {
-		return await service.get(service.resolveUrl(labels_url, name));
+		return await service.get(resolveUrl(labels_url, name));
 	};
 
 	// @return: Boolean
@@ -31,10 +31,7 @@ export default service => {
 	// @note: affect label to a pr:
 	// @return: array of labels belongs to PR:
 	const affectLabel = async ({ name, issues_url, number }) => {
-		return await service.post(
-			service.resolveUrl(issues_url, number, "labels"),
-			[name]
-		);
+		return await service.post(resolveUrl(issues_url, number, "labels"), [name]);
 	};
 
 	const extractLabel = title => {

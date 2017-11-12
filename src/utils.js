@@ -10,3 +10,9 @@ export const stripUrl = url => {
 export const getRandomColor = () => {
 	return ((Math.random() * 0xffffff) << 0).toString(16);
 };
+
+export const resolveUrl = (...urlParts) => {
+	// @note: toString() since resolve accepts only string
+	// (especially if relativeUrl is a number)
+	return urlParts.map(part => stripUrl(part)).join("/");
+};

@@ -44,11 +44,10 @@ export default class GitHub extends EventEmitter {
 		return GitHub.afterFetch(res);
 	}
 
-	async patch(url) {}
+	// async patch(url) {}
 
-	resolveUrl(...urlParts) {
-		// @note: toString() since resolve accepts only string
-		// (especially if relativeUrl is a number)
-		return urlParts.map(part => stripUrl(part)).join("/");
+	getStatics() {
+		// @note: or return this.constructor:
+		return GitHub;
 	}
 }
