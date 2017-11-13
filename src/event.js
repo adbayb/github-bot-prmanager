@@ -19,23 +19,6 @@ class EventEmitter {
 		return true;
 	}
 
-	// @note: plugins reacts to events (signature: (service) => { eventName: (), ... })
-	// @note: a plugin can subscribe to multiple listeners
-	addPlugin(plugin) {
-		const listeners = plugin(this);
-
-		Object.keys(listeners).forEach(eventName => {
-			this.addListener(eventName, listeners[eventName]);
-		});
-	}
-
-	// @note: if there are no parameters, rest operator will be set by default to []
-	addPlugins(...plugins) {
-		plugins.forEach(plugin => {
-			this.addPlugin(plugin);
-		});
-	}
-
 	addListener(eventName, callback) {
 		if (typeof callback !== "function") {
 			return false;
