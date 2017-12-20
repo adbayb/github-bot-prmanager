@@ -1,7 +1,7 @@
 export default service => {
 	const LABEL_NAME = "LGTM";
 	const COMMENT = `${LABEL_NAME} !`;
-	const MIN_APPROVALS = 1;
+	const MIN_APPROVALS = process.env.MIN_REVIEWERS || 1;
 
 	const getLastReviews = (reviews = []) => {
 		return reviews.reduce((prev, current = {}) => {
@@ -22,7 +22,9 @@ export default service => {
 			repository: { labels_url, issues_url } = {}
 		}) {
 			try {
-				const reviews = await service.getReviews({ pull_request_url: url });
+				const reviews = await service.getReviews({
+					pull_request_url: url
+				});
 				/* @note: reviews array contains all reviews objects history (a same user can
 				review multiple times so potentially we can have multiple reviews
 				for the same user: so we need to only pay attention on the last review
